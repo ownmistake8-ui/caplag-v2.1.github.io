@@ -741,4 +741,14 @@ button, input, textarea, select {
 
 .logo-area:hover {
     opacity: 0.8; /* Эффект при наведении */
+
+}
+/* Убираем соцсети на мобильных */
+@media (max-width: 768px) {
+  .social-links,
+  .social-icons,
+  .header-social,
+  .top-social {
+    display: none !important;
+  }
 }
