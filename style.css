@@ -598,166 +598,40 @@ footer {
     background-color: var(--bg-body);
 }
 
-/* АДАПТИВ ДЛЯ МОБИЛ */
+/* Мобилки: не даём футеру/соцсетям лезть в хеддер, а иконки переносим вниз */
 @media (max-width: 1000px) {
-  body {
-    flex-direction: column;
-  }
 
-  /* Сайдбар превращаем в верхнюю панель (без hover-логики) */
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: sticky; /* держится сверху, но не ломает поток */
-    top: 0;
-    left: 0;
-
-    padding: 16px 16px;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    gap: 14px;
-
-    overflow: visible;
-    z-index: 1000;
-  }
-
-  .sidebar:hover {
-    width: 100%;
-  }
-
-  /* Верхняя строка: логотип + навигация */
-  .logo-area {
-    margin-bottom: 0;        /* было 60px — раздувало шапку */
-    min-width: 0;            /* было 230px — вызывало переполнение */
-  }
-
-  .logo-area span {
-    opacity: 1;              /* на мобилке всегда видно */
-  }
-
-  .sidebar-nav ul {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 10px 14px;
-  }
-
-  .sidebar-nav a {
-    opacity: 1;
-    transform: none;
-    font-size: 0.85rem;
-  }
-
-  /* Активная метка не должна “уезжать” влево */
-  .sidebar-nav a.active::before {
-    left: -10px;
-    opacity: 1;
-  }
-
-  /* Соцсети: в одну строку, без “анимаций появления” */
+  /* 1) В хеддере (sidebar) соцблок НЕ фиксируем */
   .sidebar-socials {
-    margin-top: 0;
-    padding-top: 0;
+    position: static !important;
+    left: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    background: transparent !important;
+    border: 0 !important;
+    padding: 0 !important;
+    margin-top: 0 !important;
+    backdrop-filter: none !important;
   }
 
-  .socials-title,
-  .sidebar-footer {
-    opacity: 1;
-  }
-
-  .socials-grid {
-    flex-wrap: wrap;
-  }
-
-  .social-link {
-    opacity: 1;
-    transform: none;
-  }
-
-  /* Контент на всю ширину */
-  main {
-    margin-left: 0;
-    width: 100%;
-  }
-  .sidebar:hover ~ main {
-    margin-left: 0;
-    width: 100%;
-  }
-
-  /* Контейнер — меньше боковых паддингов */
-  .container {
-    padding: 0 18px;
-  }
-
-  /* Типографика героя */
-  .hero h1 {
-    font-size: 3rem;
-  }
-
-  /* Гриды */
-  .news-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-  }
-  .contact-wrapper {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Ещё один небольшой брейкпоинт для совсем узких экранов */
-@media (max-width: 480px) {
-  .hero h1 { font-size: 2.4rem; }
-  .hero p  { font-size: 1.05rem; }
-  .btn-primary { padding: 14px 28px; }
-  .container { padding: 0 14px; }
-}
-
-
-/* Сброс шрифтов для специфических элементов */
-button, input, textarea, select {
-    font-family: inherit;
-}
-
-/* Предзагрузка */
-.link-preload {
-    position: absolute;
-    width: 0;
-    height: 0;
-    overflow: hidden;
-}
-.logo-area {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    font-weight: 900;
-    font-size: 1.8rem;
-    color: var(--accent-primary);
-    letter-spacing: -1px;
-    margin-bottom: 60px;
-    min-width: 230px;
-    cursor: pointer; /* Добавь это! */
-    transition: opacity 0.3s ease; /* Добавь это! */
-}
-
-.logo-area:hover {
-    opacity: 0.8; /* Эффект при наведении */
-
-}
-/* Мобилки: переносим соцсети вниз, чтобы не портили верх */
-@media (max-width: 1000px) {
-  /* убираем заголовок и подпись, оставляем только иконки */
+  /* 2) Убираем “футер” и заголовок на мобилке (чтобы не занимали место сверху) */
   .sidebar-socials .socials-title,
   .sidebar-socials .sidebar-footer {
     display: none !important;
   }
 
-  /* делаем соцсети фиксированными снизу */
-  .sidebar-socials {
+  /* 3) Фиксируем ТОЛЬКО иконки снизу */
+  .sidebar-socials .socials-grid {
     position: fixed !important;
-    left: 50%;
-    bottom: 14px;
-    transform: translateX(-50%);
-    z-index: 9999;
+    left: 50% !important;
+    bottom: 14px !important;
+    transform: translateX(-50%) !important;
+    z-index: 9999 !important;
+
+    display: flex !important;
+    gap: 12px !important;
+    align-items: center !important;
+    justify-content: center !important;
 
     background: rgba(0, 0, 0, 0.75);
     border: 1px solid rgba(118, 255, 3, 0.35);
@@ -766,28 +640,20 @@ button, input, textarea, select {
     backdrop-filter: blur(6px);
   }
 
-  .sidebar-socials .socials-grid {
-    display: flex !important;
-    gap: 12px;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* чтобы контент не закрывался этой плашкой */
+  /* 4) Чтобы контент не перекрывался нижней плашкой */
   main {
     padding-bottom: 90px;
   }
 }
 
-/* Очень маленькие экраны — чуть компактнее */
 @media (max-width: 420px) {
-  .sidebar-socials {
-    bottom: 10px;
-    padding: 8px 12px;
-  }
   .sidebar-socials .socials-grid {
-    gap: 10px;
+    bottom: 10px !important;
+    padding: 8px 12px !important;
+    gap: 10px !important;
   }
 }
+
+
 
 
