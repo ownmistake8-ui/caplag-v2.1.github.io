@@ -743,4 +743,51 @@ button, input, textarea, select {
     opacity: 0.8; /* Эффект при наведении */
 
 }
+/* Мобилки: переносим соцсети вниз, чтобы не портили верх */
+@media (max-width: 1000px) {
+  /* убираем заголовок и подпись, оставляем только иконки */
+  .sidebar-socials .socials-title,
+  .sidebar-socials .sidebar-footer {
+    display: none !important;
+  }
+
+  /* делаем соцсети фиксированными снизу */
+  .sidebar-socials {
+    position: fixed !important;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
+    z-index: 9999;
+
+    background: rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(118, 255, 3, 0.35);
+    border-radius: 999px;
+    padding: 10px 14px;
+    backdrop-filter: blur(6px);
+  }
+
+  .sidebar-socials .socials-grid {
+    display: flex !important;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* чтобы контент не закрывался этой плашкой */
+  main {
+    padding-bottom: 90px;
+  }
+}
+
+/* Очень маленькие экраны — чуть компактнее */
+@media (max-width: 420px) {
+  .sidebar-socials {
+    bottom: 10px;
+    padding: 8px 12px;
+  }
+  .sidebar-socials .socials-grid {
+    gap: 10px;
+  }
+}
+
 
