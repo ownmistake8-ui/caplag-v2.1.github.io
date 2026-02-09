@@ -653,6 +653,21 @@ footer {
     gap: 10px !important;
   }
 }
+/* Мобилки: убираем соцсети полностью (чтобы не ломали верх/вайб) */
+@media (max-width: 1000px) {
+  .sidebar-socials {
+    display: none !important;
+  }
+
+  /* если вдруг где-то есть отдельные контейнеры соцсетей */
+  .socials-grid,
+  .social-link,
+  .socials-title,
+  .sidebar-footer {
+    display: none !important;
+  }
+}
+
 
 
 
