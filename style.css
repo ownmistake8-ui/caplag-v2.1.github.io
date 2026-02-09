@@ -706,6 +706,39 @@ footer {
     box-sizing: border-box;
   }
 }
+/* =========================
+   MOBILE: УБИРАЕМ SIDEBAR ПОЛНОСТЬЮ
+   ========================= */
+@media (max-width: 1000px) {
+
+  /* сам сайдбар — исчезает */
+  .sidebar {
+    display: none !important;
+  }
+
+  /* УБИРАЕМ ОТСТУП ПОД SIDEBAR */
+  body,
+  main,
+  .page,
+  .container {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  /* если у тебя grid / flex layout */
+  .layout,
+  .wrapper,
+  .app {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* контент на всю ширину */
+  main {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
 
 
 
