@@ -1,0 +1,339 @@
+/* Специфические стили для страницы состава */
+.roster-page-wrapper {
+    display: flex;
+    min-height: 100vh;
+    margin-left: 0;
+    transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar:hover ~ main .roster-page-wrapper {
+    margin-left: 180px;
+}
+
+/* Левая часть: Список имен */
+.players-list-column {
+    width: 350px;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+.back-link {
+    padding: 0 40px 30px;
+    font-size: 0.8rem;
+    color: #808a80;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: #76ff03;
+}
+
+.player-nav-item {
+    padding: 20px 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.player-nav-item:hover {
+    background: #0d110d;
+}
+
+.player-nav-item.active {
+    background: #141a14;
+    border-left-color: #76ff03;
+}
+
+.p-nav-nick {
+    font-size: 1.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.p-nav-name {
+    font-size: 0.7rem;
+    color: #808a80;
+    text-transform: uppercase;
+}
+
+/* Правая часть: Детальная инфо */
+.player-details-column {
+    flex: 1;
+    background: #111;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10%;
+    background: radial-gradient(circle at 70% 50%, #0f2b0f 0%, #050705 100%);
+}
+
+.player-info-content {
+    max-width: 500px;
+    z-index: 5;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.p-detail-role {
+    color: #76ff03;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.p-detail-nick {
+    font-size: 6rem;
+    font-weight: 900;
+    line-height: 0.9;
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+}
+
+.p-detail-bio {
+    color: #808a80;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.p-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.p-stat-label {
+    font-size: 0.7rem;
+    color: #808a80;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.p-stat-value {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #fff;
+}
+
+.p-stat-value.highlight {
+    color: #76ff03;
+}
+
+/* Фото игрока на фоне */
+.player-photo-bg {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 90%;
+    z-index: 1;
+    opacity: 0.8;
+    transition: 0.5s;
+}
+
+/* Мобильная адаптация для страницы состава */
+@media (max-width: 1000px) {
+    .roster-page-wrapper {
+        flex-direction: column;
+        margin-left: 0 !important;
+    }
+    
+    .players-list-column {
+        width: 100%;
+        height: auto;
+        max-height: 300px;
+        padding: 20px 0;
+    }
+    
+    .player-details-column {
+        padding: 40px 20px;
+        min-height: 70vh;
+        justify-content: center;
+    }
+    
+    .player-info-content {
+        max-width: 100%;
+        text-align: center;
+    }
+    
+    .p-detail-nick {
+        font-size: 4rem;
+    }
+    
+    .player-photo-bg {
+        height: 70%;
+        opacity: 0.3;
+    }
+}
+
+.config-download {
+    position: absolute;
+    top: 10px;
+    right: -60px;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    text-decoration: none;
+}
+
+.config-download:hover {
+    background: rgba(118, 255, 3, 0.1);
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 0 20px rgba(118, 255, 3, 0.35);
+}
+
+.config-icon {
+    width: 24px;
+    height: 24px;
+    color: #76ff03;
+    transition: all 0.3s ease;
+    font-size: 1.5rem;
+}
+
+.config-download:hover .config-icon {
+    transform: translateY(-2px);
+    color: #ffffff;
+}
+
+.config-tooltip {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: #76ff03;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid #76ff03;
+    z-index: 20;
+}
+
+.config-download:hover .config-tooltip {
+    opacity: 1;
+    visibility: visible;
+    top: -45px;
+}
+
+.p-detail-nick {
+    position: relative;
+    display: inline-block;
+}
+
+/* Адаптация для иконок Faceit и конфигов на мобильных */
+@media (max-width: 1000px) {
+    .config-download,
+    .faceit-link {
+        position: relative;
+        top: 0;
+        right: 0;
+        display: inline-block;
+        margin: 10px 5px;
+    }
+    
+    .config-tooltip,
+    .faceit-tooltip {
+        display: none;
+    }
+    
+    .p-detail-nick {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}
+.player-photo-bg {
+  right: 0;
+  bottom: -1%;
+  height: 92%;
+  max-width: 55%;
+  object-fit: contain;
+
+  opacity: 0.6;
+  filter: contrast(1.08) saturate(0.95)
+          drop-shadow(0 0 18px rgba(118,255,3,0.18))
+          drop-shadow(0 0 42px rgba(118,255,3,0.10));
+  transition: opacity .35s ease, transform .35s ease, filter .35s ease;
+
+  -webkit-mask-image: linear-gradient(90deg,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.65) 18%,
+    rgba(0,0,0,1) 40%,
+    rgba(0,0,0,1) 100%);
+  mask-image: linear-gradient(90deg,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.65) 18%,
+    rgba(0,0,0,1) 40%,
+    rgba(0,0,0,1) 100%);
+}
+
+.player-details-column:hover .player-photo-bg {
+  opacity: 0.78;
+  transform: translateX(-8px) scale(1.015);
+  filter: contrast(1.12) saturate(1.05)
+          drop-shadow(0 0 22px rgba(118,255,3,0.22))
+          drop-shadow(0 0 60px rgba(118,255,3,0.12));
+}
+/* Фото всегда в пределах экрана */
+.player-photo-bg{
+  max-width: 55vw;      /* не шире половины экрана */
+  height: 92%;
+  object-fit: contain;  /* не режем PNG */
+  pointer-events: none; /* чтобы не мешало кликам */
+}
+
+/* Планшеты/ноуты поменьше */
+@media (max-width: 1200px){
+  .player-photo-bg{
+    max-width: 60vw;
+    opacity: 0.45;
+  }
+}
+
+/* Мобилка (у тебя уже есть блок max-width:1000px, но это усиление) */
+@media (max-width: 1000px){
+  .player-photo-bg{
+    position: absolute;
+    right: -6%;         /* чуть уводим за край, чтобы не закрывало текст */
+    bottom: -8%;
+    height: 60vh;       /* вместо процентов — стабильнее */
+    max-width: 95vw;
+    opacity: 0.22;
+  }
+}
+
+/* Очень маленькие экраны — можно скрыть фото совсем, чтобы ничего не ломалось */
+@media (max-width: 420px){
+  .player-photo-bg{
+    display: none;
+  }
+}
