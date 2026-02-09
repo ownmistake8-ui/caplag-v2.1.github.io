@@ -667,3 +667,83 @@ footer {
   .news-item { min-height: 210px; }
   .news-img-placeholder { height: 210px; }
 }
+/* =========================
+   MOBILE PORTRAIT (iPhone)
+   ========================= */
+@media (max-width: 600px) {
+
+  /* Sidebar превращаем в нормальный верхний хедер */
+  .sidebar {
+    position: sticky !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 12px 14px !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    z-index: 1000 !important;
+  }
+  .sidebar:hover { width: 100% !important; }
+
+  /* лого компактнее */
+  .logo-img { height: 40px !important; }
+  .logo-area { margin: 0 !important; font-size: 1.4rem !important; }
+  .logo-area span { opacity: 1 !important; }
+
+  /* навигация в одну строку со скроллом (чтобы не ломало) */
+  .sidebar-nav ul {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px !important;
+    padding-bottom: 4px !important;
+  }
+  .sidebar-nav a {
+    opacity: 1 !important;
+    transform: none !important;
+    font-size: 0.85rem !important;
+    white-space: nowrap !important;
+  }
+
+  /* соцсети убираем на мобилке (портят верх) */
+  .sidebar-socials { display: none !important; }
+
+  /* основной контент — на всю ширину */
+  main {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+  .container { padding: 0 14px !important; }
+
+  /* HERO — нормальные размеры */
+  .hero { height: auto !important; padding: 60px 0 40px !important; }
+  .hero h1 { font-size: 2.6rem !important; line-height: 1.0 !important; }
+  .hero p { font-size: 1.05rem !important; margin-bottom: 22px !important; }
+  .btn-primary { padding: 14px 22px !important; width: 100% !important; max-width: 360px; }
+
+  /* Новости — строго друг за другом */
+  .news-grid {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important;
+    gap: 14px !important;
+  }
+  .news-item, .news-main {
+    grid-row: auto !important;
+    min-height: 220px !important;
+  }
+  .news-img-placeholder { height: 220px !important; }
+  .news-content { padding: 16px !important; }
+  .news-title { font-size: 1.15rem !important; }
+  .news-main .news-title { font-size: 1.35rem !important; }
+
+  /* Контакты — в одну колонку, форма всегда видна */
+  .contact-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+  .contact-form { padding: 18px !important; }
+}
+
+
