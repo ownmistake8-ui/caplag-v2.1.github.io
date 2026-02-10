@@ -745,5 +745,58 @@ footer {
   }
   .contact-form { padding: 18px !important; }
 }
+/* === FIX: фото не лезет на текст === */
+
+/* Родитель должен быть относительным, чтобы absolute фото позиционировалось внутри */
+.player-details-column {
+  position: relative;
+  overflow: hidden; /* чтобы фото не вылезало наружу */
+}
+
+/* Резервируем место справа под фото */
+.player-details-column .player-details {
+  /* ширина под фото: от 220px до 360px, в зависимости от экрана */
+  padding-right: clamp(220px, 38vw, 360px);
+}
+
+/* Само фото: ограничиваем размеры и слои */
+.player-photo-bg {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  height: 92%;
+  max-width: clamp(220px, 38vw, 360px);
+  object-fit: contain;
+
+  z-index: 0;          /* фото ниже */
+  pointer-events: none;
+}
+
+/* Текст всегда выше фото */
+.player-details-column .player-details * {
+  position: relative;
+  z-index: 1;
+}
+
+/* На узких экранах уменьшаем влияние фото */
+@media (max-width: 1000px) {
+  .player-details-column .player-details {
+    padding-right: 0;  /* на мобилке текст на всю ширину */
+  }
+  .player-photo-bg {
+    opacity: 0.18;
+    max-width: 90vw;
+    height: 55vh;
+    right: -8%;
+    bottom: -10%;
+  }
+}
+
+/* На совсем маленьких — лучше выключить фото, чтобы не мешало */
+@media (max-width: 520px) {
+  .player-photo-bg { display: none; }
+}
+
 
 
