@@ -337,3 +337,48 @@
     display: none;
   }
 }
+/* =========================================
+   FIX: фото не наезжает на текст (roster)
+   ========================================= */
+
+/* Резервируем место справа под фото */
+.player-details-column{
+  padding-right: clamp(220px, 34vw, 420px); /* место под PNG */
+  overflow: hidden; /* чтобы фото не вылезало наружу */
+}
+
+/* Текст всегда поверх фото */
+.player-info-content{
+  position: relative;
+  z-index: 5; /* у тебя уже 5, но оставим явно */
+}
+
+/* Ограничиваем фото по ширине + делаем его “фоновым” */
+.player-photo-bg{
+  max-width: clamp(220px, 34vw, 420px);
+  width: auto;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Когда становится уже — фото убираем в фон и даём тексту всю ширину */
+@media (max-width: 1100px){
+  .player-details-column{
+    padding-right: 0;
+  }
+  .player-photo-bg{
+    opacity: 0.22;
+    right: -10%;
+    height: 60vh;
+    max-width: 95vw;
+  }
+}
+
+/* На совсем маленьких — лучше скрыть, чтобы не мешало */
+@media (max-width: 520px){
+  .player-photo-bg{
+    display: none;
+  }
+}
+
