@@ -836,3 +836,64 @@ footer {
         text-align: center !important;
     }
 }
+/* ФИКС ДЛЯ ТЕЛЕФОНА - ТЕКСТ ВЛЕЗАЕТ В ЭКРАН */
+@media (max-width: 768px) {
+    .merch-hero h1 {
+        font-size: 1.8rem !important;
+        line-height: 1.2 !important;
+        padding: 0 15px !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+        max-width: 100% !important;
+        margin: 20px auto !important;
+        text-align: center !important;
+        display: block !important;
+    }
+    
+    .merch-hero p {
+        font-size: 0.95rem !important;
+        padding: 0 20px !important;
+        line-height: 1.5 !important;
+        max-width: 100% !important;
+        margin: 0 auto 30px !important;
+    }
+    
+    .merch-hero .merch-container {
+        padding: 30px 15px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+    }
+}
+
+/* МАЛЕНЬКИЕ ТЕЛЕФОНЫ */
+@media (max-width: 480px) {
+    .merch-hero h1 {
+        font-size: 1.5rem !important;
+        padding: 0 10px !important;
+        margin: 15px auto !important;
+        letter-spacing: -0.5px !important;
+    }
+    
+    .merch-hero p {
+        font-size: 0.9rem !important;
+        padding: 0 15px !important;
+    }
+    
+    .merch-hero {
+        padding: 80px 0 40px !important;
+    }
+}
+
+/* ОЧЕНЬ МАЛЕНЬКИЕ ТЕЛЕФОНЫ */
+@media (max-width: 360px) {
+    .merch-hero h1 {
+        font-size: 1.3rem !important;
+        line-height: 1.1 !important;
+    }
+    
+    .merch-hero p {
+        font-size: 0.85rem !important;
+    }
+}
