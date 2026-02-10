@@ -118,3 +118,14 @@ const imgEl = document.getElementById('p-img');
 document.addEventListener('DOMContentLoaded', function() {
     showPlayer('wh1testxr');
 });
+// Обновляем мобильную фотографию
+const mobileImgEl = document.getElementById('p-img-mobile');
+if (mobileImgEl) {
+    mobileImgEl.onload = () => mobileImgEl.classList.add('loaded');
+    mobileImgEl.onerror = () => {
+        mobileImgEl.classList.remove('loaded');
+        console.error('Не удалось загрузить мобильное фото:', data.img);
+    };
+    mobileImgEl.src = data.img;
+}
+    
